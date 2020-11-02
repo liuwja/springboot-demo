@@ -11,7 +11,7 @@
         <result column="address" jdbcType="VARCHAR" property="address"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, name, email, username, password, createDate, address
+    id, name, email, username, password, createDate, address,sex
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -114,7 +114,7 @@
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="findUser" resultType="com.liuwjg.entity.User">
+    <select id="findUser" resultType="com.liuwjg.entity.User" >
         select
         <include refid="Base_Column_List"/>
         from user
@@ -125,5 +125,16 @@
         select
         <include refid="Base_Column_List"/>
         from user
+        <where>
+            <if test="name!='' and name != null">
+                and name = #{name}
+            </if>
+            <if test="username!='' and username != null">
+                and username = #{username}
+            </if>
+            <if test="sex!='' and sex != null">
+                and sex = #{sex}
+            </if>
+        </where>
     </select>
 </mapper>

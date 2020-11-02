@@ -1,10 +1,12 @@
 package com.liuwjg.controller;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.liuwjg.common.CommonPage;
 import com.liuwjg.common.Result;
 import com.liuwjg.entity.User;
 import com.liuwjg.service.IUserService;
+import com.liuwjg.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +22,9 @@ public class UserController {
         return Result.success(user);
     }
 
-    @GetMapping("list")
-    public Result list(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        Page page = userService.list(pageNum, pageSize);
+    @RequestMapping("list")
+    public Result list(@RequestBody UserVo vo) {
+        PageInfo page = userService.list(vo);
         return Result.success(CommonPage.restPage(page));
     }
 

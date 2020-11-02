@@ -1,7 +1,9 @@
 package com.liuwjg.dao;
 
 import com.liuwjg.entity.User;
+import com.liuwjg.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-    List<User> list(Map<String, Object> map);
+
+    List<User> list(UserVo vo);
 
     User findUser(User user);
 }
