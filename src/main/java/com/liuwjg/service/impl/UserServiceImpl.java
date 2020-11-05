@@ -42,4 +42,9 @@ public class UserServiceImpl implements IUserService {
     public int update(User user) {
         return userMapper.updateByPrimaryKey(user);
     }
+
+    @Override
+    public int delete(Integer id) {
+        return userMapper.deleteByPrimaryKey(id);
+    }
 }
