@@ -1,5 +1,7 @@
 package com.liuwjg.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.liuwjg.common.Result;
 import com.liuwjg.entity.User;
 import com.liuwjg.service.IUserService;
@@ -16,7 +18,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public Result login(@RequestBody User user) {
-        User u = userService.findUser(user);
+        QueryWrapper<User> queryWrapper = Wrappers.query(user);
+        User u = userService.getOne(queryWrapper,false);
         return Result.success(u != null);
 
     }

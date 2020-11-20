@@ -1,29 +1,33 @@
 package com.liuwjg.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.util.Date;
 
 public class User {
-    private Integer id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
     private String name;
 
     private String email;
 
-    private String username;
+    private String userName;
 
     private String password;
 
-    private Date createdate;
+    private Date createDate;
 
     private String address;
 
     private String sex;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,12 +47,12 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
     public String getPassword() {
@@ -59,12 +63,12 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getAddress() {
